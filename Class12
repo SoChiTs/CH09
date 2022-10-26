@@ -1,0 +1,48 @@
+class CRational 
+{
+public int n;
+public int d;
+public void setND(int num,int den)
+{
+n=num;
+d=den;
+}
+public static CRational sub(CRational r1,CRational r2)
+{
+CRational obj=new CRational();
+obj.n=r1.n*r2.d-r1.d*r2.n;
+obj.d=r1.d*r2.d;
+return obj;
+}
+public static CRational compare(CRational r1,CRational r2)
+{
+CRational obj=new CRational();
+obj=sub(r1,r2);
+if(obj.n<0 || obj.d<0)
+return r2;
+else
+return r1;
+}
+}
+public class hw9_12
+{
+public static void main(String args[])
+{
+CRational aaa=new CRational();
+CRational bbb=new CRational();
+CRational ccc;
+aaa.setND(2,5);
+show(aaa);
+System.out.println();
+bbb.setND(3,7);
+show(bbb);
+System.out.println();
+ccc=CRational.compare(aaa,bbb);
+show(ccc);
+System.out.println(" is larger");
+}
+public static void show(CRational obj) // 顯示分數
+{
+System.out.print(obj.n+"/"+obj.d);
+}
+}
